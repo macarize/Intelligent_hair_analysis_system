@@ -12,7 +12,7 @@ def clustering(image, k) :
     image = segmented_image.reshape(image.shape)
     return image
 
-path = "bald4_cropped.png"
+path = "input_images/bald4_cropped.png"
 width = 200
 height = 200
 errorV = np.array([])
@@ -48,8 +48,10 @@ for i in range(1, 28):
 
 k = 3
 minIndex = np.argpartition(errorV, k)[:k]
+
+print("3 promising status of hair")
 for i in minIndex:
-    print("Index : " + str(i+1) + " " + str(errorV[i+1]))
+    print("Index : " + str(i+1) + " " + "MSE : " + str(errorV[i+1]))
 
 cv2.imshow('Midimage', Midimage)
 cv2.waitKey(0)
